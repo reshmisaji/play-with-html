@@ -72,13 +72,19 @@ const toggler = function () {
 	modes[dayNight[counter % 2]]();
 }
 
-const getCode = function () {
-	let markup = document.getElementById("code").value;
-	let headElement = markup.split("</head>");
-	let body = headElement[1];
-	headElement = headElement[0];
+const getTitle = function (headElement) {
 	let title = headElement.split("</title>")[0];
 	title = title.split("<title>")[1];
+	return title;
+}
+
+const getCode = function () {
+	let markup = document.getElementById("code").value;
+	let headElement = markup.split("<body>");
+	let body = headElement[1];
+	headElement = headElement[0];
+	let title = getTitle(headElement);
+
 	putHtmlCode('tabHead', title);
 	putHtmlCode('codeOutput', body);
 }

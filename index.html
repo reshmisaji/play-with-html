@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>change fonts</title>
+	<link rel="stylesheet" type="text/css" href="./css/main.css" />
+	<script src="js/main.js"></script>
+</head>
+
+<body id="body" onload="loadData()">
+	<div id="heading" class="heading">
+		<h1>Play With Text</h1>
+		<a href="" style="background-color: rgb(100, 196, 100);"><b>Write html code</b></a>
+	</div>
+
+	<hr />
+
+	<div id="workspace" class="workspace">
+		<div id="inputPart"><br />
+			<div class="navigation-bar">
+				<a href="#">
+					<img src="images/home.jpeg" alt="sorry" />
+				</a> &nbsp; &nbsp;
+				<img src="images/run.png" id="getName" onclick="getValue()" style="width:100px" />
+				&nbsp;&nbsp;
+				<img id="nightMode" src="images/nightmode.png" alt="night mode" onClick="nightMode()" />
+				&nbsp;&nbsp;
+				<img id="dayMode" src="images/daymode.png" alt="day mode" onClick="dayMode()" />
+			</div>
+
+			<pre>
+		Text 		: 	<input type="text" id="name" placeholder="Enter any text"  />
+
+		Font-Family 	: 	<select id="font" ></select>
+
+		Font-Color 	: 	<select id="color" ></select>
+			
+		Font-Size 	: 	<input type="text" id="size" placeholder="eg: 10px"  />
+
+		backgroundColor	:	<select id="bgcolor" ></select>
+
+		backgroundImage	:	<select id="image"></select>
+
+	</pre>
+		</div>
+		<div id="outPutPart" >
+			<div class="navigation-bar">
+				<h2>Your Text appears here</h2>
+			</div>
+			<div id="outPut" >
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>

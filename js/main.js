@@ -33,20 +33,15 @@ const getValue = function () {
 	let fontType = document.getElementById('font').value;
 	let fontColor = document.getElementById('color').value;
 	let letterSize = document.getElementById('size').value + 'px';
-	let data = [];
-	data.push(document.getElementById('name').value);
+	let data = document.getElementById('text').value;
 
 	document.getElementById('outputPart').style.backgroundImage = bgImage;
 	changeBackgroundColor('output', backgroundColour);
 	document.getElementById('output').style.fontFamily = fontType;
 	changeFontColor('output', fontColor);
 	document.getElementById('output').style.fontSize = letterSize;
-	putHtmlData('output', data);
+	putHtmlCode('output', data);
 };
-
-const getCode = function () {
-	document.getElementById('codeOutput').innerHTML = document.getElementById('code').value;
-}
 
 const changeBackgroundColor = function (block, anyColor) {
 	document.getElementById(block).style.backgroundColor = anyColor;
@@ -54,6 +49,10 @@ const changeBackgroundColor = function (block, anyColor) {
 
 const changeFontColor = function (block, anyColor) {
 	document.getElementById(block).style.color = anyColor;
+}
+
+const putHtmlCode = function (block, code) {
+	document.getElementById(block).innerHTML = code;
 }
 
 const putHtmlData = function (block, data) {
@@ -71,6 +70,17 @@ const getOption = function (value) {
 const toggler = function () {
 	counter = counter + 1;
 	modes[dayNight[counter % 2]]();
+}
+
+const getCode = function () {
+	let markup = document.getElementById("code").value;
+	let headElement = markup.split("</head>");
+	let body = headElement[1];
+	headElement = headElement[0];
+	let title = headElement.split("</title>")[0];
+	title = title.split("<title>")[1];
+	putHtmlCode('tabHead', title);
+	putHtmlCode('codeOutput', body);
 }
 
 const loadData = function () {

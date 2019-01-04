@@ -1,25 +1,23 @@
+let counter = 1;
+const dayNight = ['nightMode', 'dayMode'];
+const modes = {
+	'nightMode': nightMode = function () {
+		changeBackgroundColor('workspace', 'black');
+		changeBackgroundColor('inputPart', 'rgb(44, 42, 42)');
+		changeBackgroundColor('page-header', 'black');
+		changeFontColor('inputPart', 'white');
+		changeFontColor('page-header', 'white');
+		document.getElementById('nightMode').src = 'images/daymode.png';
+	},
+	'dayMode': dayMode = function () {
+		changeBackgroundColor('workspace', 'white');
+		changeBackgroundColor('inputPart', ' rgb(236, 234, 234)');
+		changeBackgroundColor('page-header', 'white');
+		changeFontColor('page-header', 'black');
+		changeFontColor('inputPart', 'black');
+	}
+}
 const images = ['images/bg.jpg', 'images/background.jpg', 'images/blueandred.jpg'];
-const colours = ["Red", "AntiqueWhite", "Aqua ", "Aquamarine", "Azure ", "Beige ", "Bisque ", "Black ",
-	"BlanchedAlmond ", "Blue ", "BlueViolet ", "Brown", "BurlyWood ", "CadetBlue ", "Chartreuse ", "Chocolate", "Coral",
-	"CornflowerBlue", "Cornsilk ", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey",
-	"DarkGreen", "DarkKhaki", "DarkMagenta ", "DarkOliveGreen ", "DarkOrange", "DarkOrchid ", "DarkRed", "DarkSalmon",
-	"DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray ", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink",
-	"DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia",
-	"Gainsboro ",
-	"GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew ", "HotPink", "IndianRed ",
-	"Indigo ", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon ", "LightBlue", "LightCoral",
-	"LightCyan ", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon",
-	"LightSeaGreen",
-	"LightSkyBlue ", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen ",
-	"Linen", "Magenta", "Maroon ", "MediumAquaMarine ", "MediumBlue", "MediumOrchid ", "MediumPurple", "MediumSeaGreen",
-	"MediumSlateBlue ", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream",
-	"MistyRose", "Moccasin", "NavajoWhite ", "Navy", "OldLace ", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid",
-	"PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip ", "PeachPuff ", "Peru ", "Pink",
-	"Plum", "PowderBlue", "Purple ", "RebeccaPurple", "AliceBlue", "RosyBrown ", "RoyalBlue", "SaddleBrown", "Salmon",
-	"SandyBrown", "SeaGreen", "SeaShell", "Sienna ", "Silver ", "SkyBlue", "SlateBlue", "SlateGray ", "SlateGrey ",
-	"Snow ", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White",
-	"WhiteSmoke", "Yellow ", "YellowGreen "
-];
 const fontFamilies = ["Arial", "monospace", "Times New Roman", "Times", "serif", "Georgia", "Palatino Linotype",
 	"Book Antiqua", "Palatino",
 	"Helvetica", "sans-serif", "Arial Black", "Gadget", "Comic Sans MS", "cursive", "Impact", "Charcoal",
@@ -29,42 +27,54 @@ const fontFamilies = ["Arial", "monospace", "Times New Roman", "Times", "serif",
 ];
 
 const getValue = function () {
-	document.getElementById('outPutPart').style.backgroundImage = "url('" + document.getElementById('image').value +
-		"')";
-	document.getElementById('outPut').style.backgroundColor = document.getElementById('bgcolor').value;
-	document.getElementById('outPutPart').style.fontFamily = document.getElementById('font').value;
-	document.getElementById('outPut').style.color = document.getElementById('color').value;
-	document.getElementById('outPut').style.fontSize = document.getElementById('size').value;
-	document.getElementById("outPut").innerHTML = document.getElementById('name').value;
+	let bgImage = "url('" + document.getElementById('image').value + "')";
+	let backgroundColour = document.getElementById('bgcolor').value;
+	let fontType = document.getElementById('font').value;
+	let fontColor = document.getElementById('color').value;
+	let letterSize = document.getElementById('size').value + 'px';
+	let data = [];
+	data.push(document.getElementById('name').value);
+
+	document.getElementById('outputPart').style.backgroundImage = bgImage;
+	changeBackgroundColor('output', backgroundColour);
+	document.getElementById('output').style.fontFamily = fontType;
+	changeFontColor('output', fontColor);
+	document.getElementById('output').style.fontSize = letterSize;
+	putHtmlData('output', data);
 };
 
-const nightMode = function () {
-	document.getElementById('workspace').style.backgroundColor = 'black';
-	document.getElementById('inputPart').style.backgroundColor = 'rgb(44, 42, 42)';
-	document.getElementById('inputPart').style.color = 'white';
-	document.getElementById('heading').style.backgroundColor = 'black';
-	document.getElementById('heading').style.color = 'white';
+const getCode = function () {
+	document.getElementById('codeOutput').innerHTML = document.getElementById('code').value;
 }
 
-const dayMode = function () {
-	document.getElementById('workspace').style.backgroundColor = 'white';
-	document.getElementById('inputPart').style.backgroundColor = ' rgb(236, 234, 234)';
-	document.getElementById('inputPart').style.color = 'black';
-	document.getElementById('heading').style.backgroundColor = 'white';
-	document.getElementById('heading').style.color = 'black';
+const changeBackgroundColor = function (block, anyColor) {
+	document.getElementById(block).style.backgroundColor = anyColor;
+}
+
+const changeFontColor = function (block, anyColor) {
+	document.getElementById(block).style.color = anyColor;
+}
+
+const putHtmlData = function (block, data) {
+	document.getElementById(block).innerHTML = data.join("");
+}
+
+const refresh = function () {
+	location.reload();
 }
 
 const getOption = function (value) {
 	return "<option value='" + value + "'>" + value + "</option>";
 }
 
+const toggler = function () {
+	counter = counter + 1;
+	modes[dayNight[counter % 2]]();
+}
+
 const loadData = function () {
 	let options = fontFamilies.map(getOption);
 	document.getElementById('font').innerHTML = options.join("");
-
-	let colors = colours.map(getOption);
-	document.getElementById('color').innerHTML = colors.join("");
-	document.getElementById('bgcolor').innerHTML = colors.join("");
 
 	let optionImages = images.map(getOption);
 	document.getElementById('image').innerHTML = optionImages.join("");

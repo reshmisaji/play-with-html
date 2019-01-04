@@ -1,29 +1,28 @@
 a {
 	text-decoration: none;
-	color:rgb(250, 245, 245);
+	color: rgb(250, 245, 245);
 }
 
-input {
-	width: 200px;
-	height: 30px;
-}
-
+input,
 select {
 	width: 200px;
 	height: 30px;
+	font-size: 20px;
 }
 
-h1,h2 {
+textarea {
+	font-size: 20px;
+	width: 530px;
+	height: 450px;
+}
+
+.page-header h1 {
 	text-align: center;
 }
 
-h1:hover {
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.heading{
-	width:"100%";
-	height:70px;
+.page-header {
+	width: "100%";
+	height: 70px;
 	text-align: right;
 }
 
@@ -44,19 +43,28 @@ h1:hover {
 	height: 700px;
 }
 
+.codeOutput {
+	width: 600px;
+	height: 400px;
+	float: center;
+	margin: 50px;
+	border-radius: 5%;
+	text-align: left;
+}
+
 #inputPart {
 	width: 45%;
 	float: left;
 	background-color: rgb(236, 234, 234);
 }
 
-#outPutPart {
+#outputPart {
 	width: 700px;
 	height: 600px;
 	float: right;
 }
 
-#outPut {
+#output {
 	width: 600px;
 	height: 400px;
 	float: center;

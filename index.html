@@ -8,9 +8,9 @@
 </head>
 
 <body id="body" onload="loadData()">
-	<div id="heading" class="heading">
+	<div id="page-header" class="page-header">
 		<h1>Play With Text</h1>
-		<a href="" style="background-color: rgb(100, 196, 100);"><b>Write html code</b></a>
+		<a href="htmlWriter.html" style="background-color: rgb(100, 196, 100);"><b>Write html code</b></a>
 	</div>
 
 	<hr />
@@ -18,36 +18,32 @@
 	<div id="workspace" class="workspace">
 		<div id="inputPart"><br />
 			<div class="navigation-bar">
-				<a href="#">
-					<img src="images/home.jpeg" alt="sorry" />
-				</a> &nbsp; &nbsp;
+				<img src="images/home.jpeg" alt="refresh" onclick="refresh()" /> &nbsp; &nbsp;
 				<img src="images/run.png" id="getName" onclick="getValue()" style="width:100px" />
 				&nbsp;&nbsp;
-				<img id="nightMode" src="images/nightmode.png" alt="night mode" onClick="nightMode()" />
-				&nbsp;&nbsp;
-				<img id="dayMode" src="images/daymode.png" alt="day mode" onClick="dayMode()" />
+				<img id="nightMode" src="images/nightmode.png" alt="night mode" onClick="toggler()" />
 			</div>
 
-			<pre>
-		Text 		: 	<input type="text" id="name" placeholder="Enter any text"  />
+			<pre style="font-size: 18px">
+	Text 		: 	<input type="text" id="name" placeholder="Enter any text"  />
 
-		Font-Family 	: 	<select id="font" ></select>
+	Font-Family 	: 	<select id="font" ></select>
 
-		Font-Color 	: 	<select id="color" ></select>
-			
-		Font-Size 	: 	<input type="text" id="size" placeholder="eg: 10px"  />
+	Font-Color 	: 	<input type="color" id="color">
+		
+	Font-Size 	: 	<input type="text" id="size" placeholder="eg: 10"  />
 
-		backgroundColor	:	<select id="bgcolor" ></select>
+	backgroundColor	:	<input type="color" id="bgcolor" >
 
-		backgroundImage	:	<select id="image"></select>
+	backgroundImage	:	<select id="image"></select>
 
 	</pre>
 		</div>
-		<div id="outPutPart" >
+		<div id="outputPart">
 			<div class="navigation-bar">
 				<h2>Your Text appears here</h2>
 			</div>
-			<div id="outPut" >
+			<div id="output">
 			</div>
 
 		</div>

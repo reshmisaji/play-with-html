@@ -15,28 +15,27 @@
   <hr />
 
   <div id="workspace" class="workspace">
-      <div id="inputPart"><br />
-        <div class="navigation-bar">
-          <img src="images/home.jpeg" alt="refresh" onclick="refresh()" /> &nbsp; &nbsp;
-          <img src="images/run.png" id="getName" onclick="getCode()" style="width:100px" />
-          &nbsp;&nbsp;
-          <img id="nightMode" src="images/nightmode.png" alt="night mode" onClick="nightMode()" />
-          &nbsp;&nbsp;
-          <img id="dayMode" src="images/daymode.png" alt="day mode" onClick="dayMode()" />
-        </div>
-  <pre>
+    <div class="navigation-bar-left">
+      <img src="images/home.jpeg" alt="refresh" onclick="refresh()" /> &nbsp; &nbsp;
+      <img src="images/run.png" id="getName" onclick="getCode()" style="width:100px" />
+      &nbsp;&nbsp;
+      <img id="nightMode" src="images/nightmode.png" alt="night mode" onClick="toggler()" />
+    </div>
+    <div class="navigation-bar-right">
+      <h2>Your Text appears here</h2>
+    </div>
+    <div id="inputPart"><br />
+
+      <pre>
     <textarea id="code" placeholder="write your html code here" ></textarea>
   </pre>
-      
+
+    </div>
+    <div id="outputPart">
+      <div id="codeOutput" class="codeOutput">
       </div>
-      <div id="outputPart">
-        <div class="navigation-bar">
-          <h2>Your Text appears here</h2>
-        </div>
-        <div id="codeOutput" class="codeOutput">
-        </div>
-  
-      </div>
+
+    </div>
   </div>
 </body>
 

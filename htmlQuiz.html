@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="images/logo.jpeg" />
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <script src="./js/main.js"></script>
+  </head>
+
+  <body onload="loadQuestion()">
+    <div id="page-header" class="page-header">
+      <h1>HTML Quiz</h1>
+      <a href="index.html" style="background-color: rgb(11, 155, 140);"
+        ><b>Play with Text</b></a
+      >&nbsp;&nbsp;
+      <a href="htmlWriter.html" style="background-color: rgb(11, 155, 140);"
+        ><b>Play with HTML</b></a
+      >
+    </div>
+    <hr />
+
+    <div id="workspace" class="workspace">
+      <div class="navigation-bar-left">
+        <img src="images/home.jpeg" alt="refresh" onclick="refresh()" /> &nbsp;
+        &nbsp;
+        <img
+          src="images/submit.png"
+          id="getName"
+          onclick="checkAnswer()"
+          style="width:100px"
+        />
+        &nbsp;&nbsp;
+        <img
+          id="nightMode"
+          src="images/nightmode.png"
+          alt="night mode"
+          onClick="toggler()"
+        />
+      </div>
+      <div id="tabHead" class="navigation-bar-right">
+        <h2>Result will appear here</h2>
+      </div>
+      <div id="inputPart">
+        <br />
+        <div id="question" class="question">
+          <h1 id="qn"></h1>
+          <ol id="option"></ol>
+        </div><br />
+        <div id="answer" class="answer">
+          <input type="text" id="qAnswer" value="">
+        </div>
+      </div>
+      <div id="resultPart">
+        <div id="codeOutput" class="message">
+        <h1 id="message"></h1>
+      </div></div>
+    </div>
+  </body>
+</html>

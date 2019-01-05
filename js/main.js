@@ -1,4 +1,5 @@
 let counter = 1;
+let questionNumber = 0;
 const dayNight = ["nightMode", "dayMode"];
 const modes = {
   nightMode: (nightMode = function() {
@@ -7,6 +8,7 @@ const modes = {
     changeBackgroundColor("page-header", "black");
     changeFontColor("inputPart", "white");
     changeFontColor("page-header", "white");
+    changeBackgroundColor("resultPart", "rgb(44,42,42");
     getElement("nightMode").src = "images/daymode.png";
   }),
   dayMode: (dayMode = function() {
@@ -51,6 +53,18 @@ const fontFamilies = [
   "Courier",
   "Lucida Console",
   "Monaco"
+];
+
+const quiz = [
+  {
+    question: "What does HTML stand for ?",
+    options: [
+      "Home Tool Markup Language",
+      "Hyper Text Markup Language",
+      "Hyperlinks and Text Markup Language"
+    ],
+    answer: "2"
+  }
 ];
 
 const getElement = function(id) {
@@ -135,18 +149,42 @@ const getCode = function() {
   putHtmlCode("codeOutput", body);
 };
 
-// const highlight = function() {
-//   let val = getElementValue("code");
-//   let length = val.length - 2;
-//   let lastCharacter = val.slice(length);
-//   if (lastCharacter == "<") {
-//     getElementValue("code").slice(length).style.color = "red";
-//   }
-// };
+const rightAnswer = function() {
+  changeBackgroundColor("codeOutput", "green");
+  changeFontColor("message", "white");
+  getElement("message").style.textAlign = "center";
+  putHtmlCode("message", "WOW ! \n You Are Right");
+};
+
+const wrongAnswer = function() {
+  changeBackgroundColor("codeOutput", "red");
+  changeFontColor("message", "white");
+  getElement("message").style.textAlign = "center";
+  putHtmlCode("message", "OOPS ! \n You Are Wrong");
+};
+
+const checkAnswer = function() {
+  let answer = getElementValue("qAnswer");
+  let expectedAnswer = quiz[questionNumber].answer;
+  if (answer == expectedAnswer) {
+    rightAnswer();
+  } else {
+    wrongAnswer();
+  }
+  questionNumber++;
+};
 
 const loadData = function() {
   let optionImages = images.map(getOption);
   let options = fontFamilies.map(getOption);
   putHtmlData("font", options);
   putHtmlData("image", optionImages);
+};
+
+const loadQuestion = function() {
+  let data = quiz[questionNumber];
+  getElement("qn").innerText = data.question;
+  getElement("option").innerHTML = data.options
+    .map(x => "<li>" + x + "</li>")
+    .join("");
 };

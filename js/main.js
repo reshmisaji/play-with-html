@@ -176,6 +176,12 @@ const getCode = function() {
   putHtmlCode("codeOutput", body);
 };
 
+const openNew = function() {
+  let value = getElement("code").value;
+  let newWindow = window.open("");
+  newWindow.document.write(value);
+};
+
 const rightAnswer = function() {
   changeBackgroundColor("codeOutput", "green");
   changeFontColor("message", "white");

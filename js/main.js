@@ -165,7 +165,9 @@ const getTitle = function(headElement) {
 
 const getCode = function() {
   let markup = getElementValue("code");
-  let headElement = markup.split("<body>");
+  let headElement = markup.split(
+    /<body>/ || /<body style="background-color:red">/
+  );
   let body = headElement[1];
   headElement = headElement[0];
   let title = getTitle(headElement);
@@ -199,6 +201,8 @@ const gameOver = function() {
   getElement("question").style.paddingTop = "155px";
   getElement("question").style.borderRadius = "5%";
   getElement("answer").innerHTML = "";
+  getElement("tabHead").style.fontSize = "20px";
+  putHtmlCode("tabHead", "Thanks for participating, visit again !");
   if (quiz.length * 10 == score) {
     putHtmlCode("question", "<h1>You got all the correct answers</h1>");
   } else {

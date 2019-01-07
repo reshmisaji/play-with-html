@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="icon" href="images/logo.jpeg" />
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <script src="./js/main.js"></script>
+  </head>
 
-<head>
-	<link rel="icon" href="images/logo.jpeg" />
-  <title>Page Title</title>
-  <link rel="stylesheet" type="text/css" href="./css/main.css" />
-  <script src="./js/main.js"></script>
-</head>
-
-<body>
-  <div id="page-header" class="page-header">
-    <h1>Play With HTML</h1>
-    <a href="index.html" style="background-color: rgb(100, 196, 100);"><b>Play with Text</b></a>&nbsp;&nbsp;
-    <a href="htmlQuiz.html" style="background-color: rgb(100, 196, 100);"><b>HTML Quiz</b></a>
-  </div>
-  <hr />
-
-  <div id="workspace" class="workspace">
-    <div class="navigation-bar-left">
-      <img src="images/home.jpeg" alt="refresh" onclick="refresh()" /> &nbsp; &nbsp;
-      <img src="images/run.png" id="getName" onclick="getCode()" style="width:100px" />
-      &nbsp;&nbsp;
-      <img id="nightMode" src="images/nightmode.png" alt="night mode" onClick="toggler()" />
+  <body>
+    <div id="page-header" class="page-header">
+      <h1>Play With HTML</h1>
+      <a href="index.html" style="background-color: rgb(100, 196, 100);"
+        ><b>Play with Text</b></a
+      >&nbsp;&nbsp;
+      <a href="htmlQuiz.html" style="background-color: rgb(100, 196, 100);"
+        ><b>HTML Quiz</b></a
+      >
     </div>
-    <div id="tabHead" class="navigation-bar-right">
-      <h2>Your Text appears here</h2>
-    </div>
-    <div id="inputPart"><br />
+    <hr />
 
-      <pre>
+    <div id="workspace" class="workspace">
+      <div class="navigation-bar-left">
+        <img src="images/home.jpeg" alt="refresh" onclick="refresh()" /> &nbsp;
+        &nbsp;
+        <img
+          src="images/run.png"
+          id="getName"
+          onclick="getCode()"
+          style="width:100px"
+        />
+        &nbsp;&nbsp;
+        <img
+          id="nightMode"
+          src="images/nightmode.png"
+          alt="night mode"
+          onClick="toggler()"
+        />
+      </div>
+      <div id="tabHead" class="navigation-bar-right">
+        <h2>Your Text appears here</h2>
+      </div>
+      <div id="inputPart">
+        <br />
+
+        <pre>
     <textarea id="code" name="text" placeholder="Type your HTML code here 
     
 <!DOCTYPE html>
@@ -37,14 +52,11 @@
     <body>...</body>
 </html>" ></textarea>
   </pre>
-
-    </div>
-    <div id="outputPart">
-      <div id="codeOutput" class="codeOutput">
       </div>
-
+      <div id="outputPart"><div id="codeOutput" class="codeOutput"></div></div>
     </div>
-  </div>
-</body>
-
+    <footer >
+      Developed By Reshmi
+    </footer>
+  </body>
 </html>

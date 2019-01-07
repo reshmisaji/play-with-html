@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="icon" href="images/logo.jpeg" />
+    <title>change fonts</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <script src="js/main.js"></script>
+  </head>
 
-<head>
-	<link rel="icon" href="images/logo.jpeg" />
-	<title>change fonts</title>
-	<link rel="stylesheet" type="text/css" href="./css/main.css" />
-	<script src="js/main.js"></script>
-</head>
+  <body id="body" onload="loadData()">
+    <div id="page-header" class="page-header">
+      <h1>Play With Text</h1>
+      <a href="htmlQuiz.html" style="background-color: rgb(100, 196, 100);"
+        ><b>HTML Quiz</b></a
+      >&nbsp;&nbsp;
+      <a href="htmlWriter.html" style="background-color: rgb(100, 196, 100);"
+        ><b>Write html code</b></a
+      >
+    </div>
 
-<body id="body" onload="loadData()">
-	<div id="page-header" class="page-header">
-		<h1>Play With Text</h1>
-    <a href="htmlQuiz.html" style="background-color: rgb(100, 196, 100);"><b>HTML Quiz</b></a>&nbsp;&nbsp;
-		<a href="htmlWriter.html" style="background-color: rgb(100, 196, 100);"><b>Write html code</b></a>
-	</div>
+    <hr />
 
-	<hr />
+    <div id="workspace" class="workspace">
+      <div class="navigation-bar-left">
+        <img src="images/home.jpeg" alt="refresh" onclick="refresh()" /> &nbsp;
+        &nbsp;
+        <img
+          src="images/run.png"
+          id="getName"
+          onclick="getValue()"
+          style="width:100px"
+        />
+        &nbsp;&nbsp;
+        <img
+          id="nightMode"
+          src="images/nightmode.png"
+          alt="night mode"
+          onClick="toggler()"
+        />
+      </div>
 
-	<div id="workspace" class="workspace">
-		<div class="navigation-bar-left">
-			<img src="images/home.jpeg" alt="refresh" onclick="refresh()" /> &nbsp; &nbsp;
-			<img src="images/run.png" id="getName" onclick="getValue()" style="width:100px" />
-			&nbsp;&nbsp;
-			<img id="nightMode" src="images/nightmode.png" alt="night mode" onClick="toggler()" />
-		</div>
+      <div id="tabHead" class="navigation-bar-right">
+        <h2>Your Text appears here</h2>
+      </div>
 
-		<div id="tabHead" class="navigation-bar-right">
-			<h2>Your Text appears here</h2>
-		</div>
-
-		<div id="inputPart"><br />
-			<pre style="font-size: 18px">
+      <div id="inputPart">
+        <br />
+        <pre style="font-size: 18px">
 	Text 		: 	<input type="text" id="text" placeholder="Enter any text"  />
 
 	Font-Family 	: 	<select id="font" ></select>
@@ -44,13 +59,12 @@
 	backgroundImage	:	<select id="image"></select>
 
 	</pre>
-		</div>
+      </div>
 
-		<div id="outputPart">
-			<div id="output">
-			</div>
-		</div>
-	</div>
-</body>
-
+      <div id="outputPart"><div id="output"></div></div>
+    </div></div>
+    <footer >
+      Developed By Reshmi
+    </footer>
+  </body>
 </html>

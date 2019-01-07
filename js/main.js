@@ -165,9 +165,9 @@ const getTitle = function(headElement) {
 
 const getCode = function() {
   let markup = getElementValue("code");
-  let headElement = markup.split(
-    /<body>/ || /<body style="background-color:red">/
-  );
+  markup = markup.split("body");
+  markup = markup.join("div");
+  let headElement = markup.split("</head>");
   let body = headElement[1];
   headElement = headElement[0];
   let title = getTitle(headElement);

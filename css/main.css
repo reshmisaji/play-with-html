@@ -132,7 +132,7 @@ footer{
   text-align: center;
 }
 
-#resultPart {
+.resultPart {
   width: 700px;
   height: 480px;
   float: right;

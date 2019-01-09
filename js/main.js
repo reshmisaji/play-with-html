@@ -9,7 +9,7 @@ const modes = {
     changeBackgroundColor("page-header", "black");
     changeFontColor("inputPart", "white");
     changeFontColor("page-header", "white");
-    changeBackgroundColor("resultPart", "rgb(44,42,42");
+    changeBackgroundColor("outputPart", "rgb(44,42,42)");
     getElement("nightMode").src = "images/daymode.png";
   }),
   dayMode: (dayMode = function() {
@@ -17,6 +17,7 @@ const modes = {
     changeBackgroundColor("inputPart", " rgb(236, 234, 234)");
     changeBackgroundColor("page-header", "white");
     changeFontColor("page-header", "black");
+    changeBackgroundColor("outputPart", "rgb(236, 234, 234)");
     changeFontColor("inputPart", "black");
     getElement("nightMode").src = "images/nightmode.png";
   })

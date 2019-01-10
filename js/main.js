@@ -53,23 +53,40 @@ const toggler = function() {
   modes[dayNight[counter % 2]]();
 };
 
+const setPageBackground = function(color) {
+  changeBackgroundColor("workspace", color);
+  changeBackgroundColor("page-header", color);
+};
+
+const setIOBackground = function(color) {
+  changeBackgroundColor("outputPart", color);
+  changeBackgroundColor("inputPart", color);
+};
+
+const setFontPreferences = function(color) {
+  changeFontColor("page-header", color);
+  changeFontColor("inputPart", color);
+};
+
+const setNightmodeColors = function() {
+  setPageBackground("black");
+  setIOBackground("rgb(44, 42, 42)");
+  setFontPreferences("white");
+};
+
+const setDayModeColors = function() {
+  setPageBackground("white");
+  setIOBackground("rgb(236, 234, 234)");
+  setFontPreferences("black");
+};
+
 const modes = {
   nightMode: (nightMode = function() {
-    changeBackgroundColor("workspace", "black");
-    changeBackgroundColor("inputPart", "rgb(44, 42, 42)");
-    changeBackgroundColor("page-header", "black");
-    changeFontColor("inputPart", "white");
-    changeFontColor("page-header", "white");
-    changeBackgroundColor("outputPart", "rgb(44,42,42)");
+    setNightmodeColors();
     getElement("nightMode").src = "images/daymode.png";
   }),
   dayMode: (dayMode = function() {
-    changeBackgroundColor("workspace", "white");
-    changeBackgroundColor("inputPart", " rgb(236, 234, 234)");
-    changeBackgroundColor("page-header", "white");
-    changeFontColor("page-header", "black");
-    changeBackgroundColor("outputPart", "rgb(236, 234, 234)");
-    changeFontColor("inputPart", "black");
+    setDayModeColors();
     getElement("nightMode").src = "images/nightmode.png";
   })
 };

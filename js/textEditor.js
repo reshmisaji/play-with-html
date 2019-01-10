@@ -34,12 +34,20 @@ const fontFamilies = [
   "Monaco"
 ];
 
-const getValue = function() {
+const setBackgroundPreferences = function() {
   setBackgroundImage("outputPart", "image");
   changeBackgroundColor("output", getElementValue("bgcolor"));
+};
+
+const setTextPreferences = function() {
   setFontFamily("output", "font");
   setFontSize("output", "size");
   changeFontColor("output", getElementValue("color"));
+};
+
+const getValue = function() {
+  setBackgroundPreferences();
+  setTextPreferences();
   putHtmlCode("output", getElementValue("text"));
 };
 
@@ -47,11 +55,19 @@ const getOption = function(value) {
   return "<option value='" + value + "'>" + value + "</option>";
 };
 
-const loadData = function() {
+const loadBackgroundImages = function(images) {
   let optionImages = images.map(getOption);
+  putHtmlData("image", optionImages);
+};
+
+const loadFontFamilies = function(fontFamilies) {
   let options = fontFamilies.map(getOption);
   putHtmlData("font", options);
-  putHtmlData("image", optionImages);
+};
+
+const loadData = function() {
+  loadBackgroundImages(images);
+  loadFontFamilies(fontFamilies);
 };
 
 window.onload = loadData;

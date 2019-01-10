@@ -1,20 +1,61 @@
 const getTitle = function(headElement) {
   let title = headElement.split("</title>")[0];
-  title = title.split("<title>")[1];
-  return title;
+  return title.split("<title>")[1];
+};
+
+const splitByBody = function(code) {
+  return code.split("body");
+};
+
+const joinWithDiv = function(code) {
+  return code.join("div");
+};
+
+const replaceBody = function(markup) {
+  let code = markup;
+  code = splitByBody(code);
+  return joinWithDiv(code);
+};
+
+const separateHeadAndBody = function(markup) {
+  return markup.split("</head>");
+};
+
+const getBodyPart = function(segregatedCode) {
+  return segregatedCode[1];
+};
+
+const getHeadPart = function(segregatedCode) {
+  return segregatedCode[0];
+};
+
+const segregateHeadPart = function(segregatedCode) {
+  let headElement = getHeadPart(segregatedCode);
+  return getTitle(headElement);
+};
+
+const applyMarkups = function(title, body) {
+  putHtmlCode("tabHead", title);
+  putHtmlCode("codeOutput", body);
+};
+
+const getMarkups = function(segregatedCode) {
+  let body = getBodyPart(segregatedCode);
+  let title = segregateHeadPart(segregatedCode);
+  return { title, body };
 };
 
 const getCode = function() {
   let markup = getElementValue("code");
-  markup = markup.split("body");
-  markup = markup.join("div");
-  let headElement = markup.split("</head>");
-  let body = headElement[1];
-  headElement = headElement[0];
-  let title = getTitle(headElement);
+  markup = replaceBody(markup);
+  return markup;
+};
 
-  putHtmlCode("tabHead", title);
-  putHtmlCode("codeOutput", body);
+const processCode = function() {
+  let markup = getCode();
+  let segregatedCode = separateHeadAndBody(markup);
+  let { title, body } = getMarkups(segregatedCode);
+  applyMarkups(title, body);
 };
 
 const openNew = function() {

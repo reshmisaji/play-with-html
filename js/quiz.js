@@ -36,26 +36,52 @@ const quiz = [
   }
 ];
 
-const checkAnswer = function() {
-  let answer = getElementValue("qAnswer");
-  let expectedAnswer = quiz[questionNumber].answer;
+const makeDecision = function(answer, expectedAnswer) {
   if (answer == expectedAnswer) {
     rightAnswer();
   } else {
     wrongAnswer();
   }
   displayNext();
-  questionNumber++;
+};
+
+const displayScore = function(score) {
   putHtmlCode("tabHead", "SCORE : " + score);
 };
 
-const displayNext = function() {
+const getNextQuizStatus = function({ answer, expectedAnswer }) {
+  makeDecision(answer, expectedAnswer);
+  questionNumber++;
+  displayScore(score);
+};
+
+const checkAnswer = function() {
+  let answer = getElementValue("qAnswer");
+  let expectedAnswer = quiz[questionNumber].answer;
+  getNextQuizStatus({ answer, expectedAnswer });
+};
+
+const createNextButton = function() {
   getElement("next").innerHTML =
     "<button id='nextButton' type='button' onclick='loadQuestion()'>NEXT>></button>";
+  setPropertiesForNext();
+};
+
+const setPropertiesForNext = function() {
   changeBackgroundColor("nextButton", "black");
   changeFontColor("nextButton", "white");
   getElement("nextButton").style.fontSize = "20px";
+};
+
+const displayNext = function() {
+  createNextButton();
   getElement("qAnswer").value = "";
+};
+
+const styleQuestionPart = function() {
+  getElement("question").style.textAlign = "center";
+  getElement("question").style.paddingTop = "155px";
+  getElement("question").style.borderRadius = "5%";
 };
 
 const gameOver = function() {
@@ -64,9 +90,7 @@ const gameOver = function() {
   getElement("message").style.textAlign = "center";
   putHtmlCode("message", "GAME OVER !");
   changeBackgroundColor("question", "gray");
-  getElement("question").style.textAlign = "center";
-  getElement("question").style.paddingTop = "155px";
-  getElement("question").style.borderRadius = "5%";
+  styleQuestionPart();
   getElement("answer").innerHTML = "";
   getElement("tabHead").style.fontSize = "20px";
   putHtmlCode("tabHead", "Thanks for participating, visit again !");
@@ -77,29 +101,55 @@ const gameOver = function() {
   }
 };
 
-const rightAnswer = function() {
-  changeBackgroundColor("codeOutput", "green");
+const setOutputBackground = function(color) {
+  changeBackgroundColor("codeOutput", color);
+};
+
+const customiseMessage = function() {
   changeFontColor("message", "white");
   getElement("message").style.textAlign = "center";
+};
+
+const incrementScore = function() {
+  return (score += 10);
+};
+
+const setMessagePreferences = function(color) {
+  setOutputBackground(color);
+  customiseMessage();
+};
+
+const rightAnswer = function() {
+  setMessagePreferences("green");
   putHtmlCode("message", "WOW ! \n You Are Right");
-  score += 10;
+  incrementScore();
 };
 
 const wrongAnswer = function() {
-  changeBackgroundColor("codeOutput", "red");
-  changeFontColor("message", "white");
-  getElement("message").style.textAlign = "center";
+  setMessagePreferences("red");
   putHtmlCode("message", "OOPS ! You Are Wrong");
 };
 
-const loadQuestion = function() {
-  if (questionNumber == quiz.length) {
-    gameOver();
-  }
-  let data = quiz[questionNumber];
+const printQuestion = function(data) {
   getElement("qn").innerText = data.question;
   getElement("option").innerText = data.options.map(x => x).join("");
+};
+
+const displayQuestion = function(data) {
+  printQuestion(data);
   getElement("message").innerHTML = "";
+};
+
+const isQuestionsOver = function(questionNumber, quiz) {
+  return questionNumber == quiz.length;
+};
+
+const loadQuestion = function() {
+  let data = quiz[questionNumber];
+  if (isQuestionsOver(questionNumber, quiz)) {
+    gameOver();
+  }
+  displayQuestion(data);
   changeBackgroundColor("codeOutput", "rgb(236, 234, 234");
 };
 

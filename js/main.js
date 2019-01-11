@@ -80,13 +80,17 @@ const setDayModeColors = function() {
   setFontPreferences("black");
 };
 
+const setModeImage = function(imageAddress) {
+  getElement("nightMode").src = imageAddress;
+};
+
 const modes = {
   nightMode: (nightMode = function() {
     setNightmodeColors();
-    getElement("nightMode").src = "images/daymode.png";
+    setModeImage("images/daymode.png");
   }),
   dayMode: (dayMode = function() {
     setDayModeColors();
-    getElement("nightMode").src = "images/nightmode.png";
+    setModeImage("images/nightmode.png");
   })
 };

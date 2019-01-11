@@ -84,21 +84,35 @@ const styleQuestionPart = function() {
   getElement("question").style.borderRadius = "5%";
 };
 
-const gameOver = function() {
-  changeFontColor("message", "white");
+const setGameOverColorPreferences = function() {
   changeBackgroundColor("codeOutput", "black");
-  getElement("message").style.textAlign = "center";
-  putHtmlCode("message", "GAME OVER !");
   changeBackgroundColor("question", "gray");
-  styleQuestionPart();
-  getElement("answer").innerHTML = "";
+};
+
+const isAllCorrect = function(quiz, score) {
+  return quiz.length * 10 == score;
+};
+
+const printScore = function(quiz, score) {
+  if (isAllCorrect(quiz, score)) {
+    putHtmlCode("question", "<h1>You got all the correct answers</h1>");
+    return;
+  }
+  putHtmlCode("question", "<h1>YOUR SCORE : " + score + "</h1>");
+};
+
+const displayThankyouNote = function() {
   getElement("tabHead").style.fontSize = "20px";
   putHtmlCode("tabHead", "Thanks for participating, visit again !");
-  if (quiz.length * 10 == score) {
-    putHtmlCode("question", "<h1>You got all the correct answers</h1>");
-  } else {
-    putHtmlCode("question", "<h1>YOUR SCORE : " + score + "</h1>");
-  }
+};
+
+const gameOver = function() {
+  setGameOverColorPreferences();
+  putHtmlCode("message", "GAME OVER !");
+  styleQuestionPart();
+  getElement("answer").innerHTML = "";
+  displayThankyouNote();
+  printScore(quiz, score);
 };
 
 const setOutputBackground = function(color) {

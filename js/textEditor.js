@@ -45,7 +45,7 @@ const setTextPreferences = function() {
   changeFontColor("output", getElementValue("color"));
 };
 
-const getValue = function() {
+const applyViewPreferences   = function() {
   setBackgroundPreferences();
   setTextPreferences();
   putHtmlCode("output", getElementValue("text"));
